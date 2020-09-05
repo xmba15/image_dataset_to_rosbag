@@ -1,0 +1,19 @@
+<launch>
+  <arg name="camera_name" default="stereocam"/>
+  <arg name="image_list_path" default="$(find image_dataset_to_rosbag)/data/samples/left.txt"/>
+  <arg name="image_path" default="$(find image_dataset_to_rosbag)/data/2018-07-11-14-48-52/left"/>
+  <arg name="calib_path" default="$(find image_dataset_to_rosbag)/data/samples/left.yaml"/>
+  <arg name="time_stamp_path" default=""/>
+  <arg name="image_encoding" default="bgr8"/>
+  <arg name="frame_rate" default="30"/>
+
+  <node pkg="image_dataset_to_rosbag" type="mono_bag_converter_node" name="mono_bag_converter_node" output="screen" required="True">
+    <param name="camera_name" value="$(arg camera_name)"></param>
+    <param name="image_list_path" value="$(arg image_list_path)"></param>
+    <param name="image_path" value="$(arg image_path)"></param>
+    <param name="calib_path" value="$(arg calib_path)"></param>
+    <param name="time_stamp_path" value="$(arg time_stamp_path)"></param>
+    <param name="image_encoding" value="$(arg image_encoding)"></param>
+    <param name="frame_rate" value="$(arg frame_rate)"></param>
+  </node>
+</launch>

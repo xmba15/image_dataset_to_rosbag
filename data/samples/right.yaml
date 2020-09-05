@@ -1,0 +1,20 @@
+image_width: 881
+image_height: 400
+camera_name: stereocam
+camera_matrix:
+  rows: 3
+  cols: 3
+  data: [2.063400e+03, -1.000000e-01, 9.734000e+02, 0.000000e+00, 2.062600e+03, 5.999000e+02, 0.000000e+00, 0.000000e+00, 1.000000e+00]
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data: [-8.930000e-02, 1.270000e-01, 1.600000e-03, 1.000000e-04, 0.000000e+00]
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data: [9.999894e-01, 1.377236e-03, 4.397923e-03, -1.401345e-03, 9.999840e-01, 5.483573e-03, -4.390300e-03, -5.489678e-03, 9.999753e-01]
+projection_matrix:
+  rows: 3
+  cols: 4
+  data: [1.003556e+3, 0.000000e+0, 4.556890e+2, -1.093101e+3, 0.000000e+0, 1.003556e+3, 1.976634e+2, 0.000000e+0, 0.000000e+0, 0.000000e+0, 1.000000e+0, 0.000000e+0]
