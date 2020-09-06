@@ -34,7 +34,6 @@ MonoBagConverter::MonoBagConverter(ros::NodeHandle& nh, ros::NodeHandle& pnh)
     m_cinfo->setCameraName(m_param.cameraName);
     m_cinfo->loadCameraInfo("file://" + m_param.calibPath);
     m_ci.reset(new sensor_msgs::CameraInfo(m_cinfo->getCameraInfo()));
-
     m_imageNames = utils::parseMetaDataFile(m_param.imageListPath);
     this->initTimeStamps();
 
@@ -53,12 +52,14 @@ MonoBagConverter::~MonoBagConverter()
 void MonoBagConverter::initTimeStamps()
 {
     if (!m_param.timeStampPath.empty()) {
+        ROS_INFO_STREAM("Init time stamp with provided time stamp data");
         auto timeStampsNs = utils::parseMetaDataFile(m_param.timeStampPath);
         if (m_imageNames.size() != timeStampsNs.size()) {
-            throw std::runtime_error("number of image size and time stamp size mismatch\n");
+            throw std::runtime_error("numbers of image size and time stamp size mismatch\n");
         }
         m_timeStamps = this->getTimeStamps(timeStampsNs);
     } else {
+        ROS_INFO_STREAM("Init time stamp with frame rate");
         m_timeStamps = this->getTimeStamps(ros::Time::now(), m_param.frameRate, m_imageNames.size());
     }
 }

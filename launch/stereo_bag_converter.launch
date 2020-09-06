@@ -1,0 +1,39 @@
+<launch>
+  <!-- common param -->
+  <arg name="camera_name" default="stereocam"/>
+  <arg name="time_stamp_path" default=""/>
+  <arg name="image_encoding" default="bgr8"/>
+  <arg name="frame_rate" default="30"/>
+  <arg name="already_rectified" default="true"/>
+  <arg name="save_rectified" default="true"/>
+
+  <!-- left len param -->
+  <arg name="left_image_list_path" default="$(find image_dataset_to_rosbag)/data/samples/left.txt"/>
+  <arg name="left_image_path" default="$(find image_dataset_to_rosbag)/data/2018-07-11-14-48-52/left"/>
+  <arg name="left_calib_path" default="$(find image_dataset_to_rosbag)/data/samples/left.yaml"/>
+
+  <!-- right len param -->
+  <arg name="right_image_list_path" default="$(find image_dataset_to_rosbag)/data/samples/right.txt"/>
+  <arg name="right_image_path" default="$(find image_dataset_to_rosbag)/data/2018-07-11-14-48-52/right"/>
+  <arg name="right_calib_path" default="$(find image_dataset_to_rosbag)/data/samples/right.yaml"/>
+
+  <node pkg="image_dataset_to_rosbag" type="stereo_bag_converter_node" name="stereo_bag_converter_node" output="screen" required="True">
+    <!-- commom param -->
+    <param name="camera_name" value="$(arg camera_name)"></param>
+    <param name="time_stamp_path" value="$(arg time_stamp_path)"></param>
+    <param name="image_encoding" value="$(arg image_encoding)"></param>
+    <param name="frame_rate" value="$(arg frame_rate)"></param>
+    <param name="already_rectified" value="$(arg already_rectified)"></param>
+    <param name="save_rectified" value="$(arg save_rectified)"></param>
+
+    <!-- left len param -->
+    <param name="left_image_list_path" value="$(arg left_image_list_path)"></param>
+    <param name="left_image_path" value="$(arg left_image_path)"></param>
+    <param name="left_calib_path" value="$(arg left_calib_path)"></param>
+
+    <!-- right len param -->
+    <param name="right_image_list_path" value="$(arg right_image_list_path)"></param>
+    <param name="right_image_path" value="$(arg right_image_path)"></param>
+    <param name="right_calib_path" value="$(arg right_calib_path)"></param>
+  </node>
+</launch>

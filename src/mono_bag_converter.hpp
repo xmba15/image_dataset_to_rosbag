@@ -12,8 +12,8 @@
 #include <vector>
 
 #include <sensor_msgs/Image.h>
-
 #include <camera_info_manager/camera_info_manager.h>
+
 #include <image_dataset_to_rosbag/ParamConfig.hpp>
 
 #include "bag_converter_base.hpp"
