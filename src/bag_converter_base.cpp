@@ -1,8 +1,7 @@
 /**
  * @file    bag_converter_base.cpp
  *
-
- * @author  smallbug
+ * @author  btran
  *
  */
 

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(image_dataset_to_rosbag)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 14)
 
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
@@ -12,6 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   rosbag
 )
+
+find_package(OpenCV REQUIRED)
 
 catkin_package(
   INCLUDE_DIRS include
@@ -28,6 +30,7 @@ catkin_package(
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INCLUDE_DIRS}
 )
 
 add_executable(mono_bag_converter_node
@@ -37,6 +40,7 @@ add_executable(mono_bag_converter_node
 )
 target_link_libraries(mono_bag_converter_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBRARIES}
 )
 
 add_executable(stereo_bag_converter_node
@@ -46,4 +50,5 @@ add_executable(stereo_bag_converter_node
 )
 target_link_libraries(stereo_bag_converter_node
   ${catkin_LIBRARIES}
+  ${OpenCV_LIBRARIES}
 )
